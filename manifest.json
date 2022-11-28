@@ -1,6 +1,6 @@
 {
-  "name": "GPT-3 Writer",
-  "description": "Write a blog post in the style of your favorite thinker anywhere!",
+  "name": "Clinical Note Writing Assistant",
+  "description": "specify the condition, age, and gender of the patient and we'll do the rest.",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
@@ -11,6 +11,16 @@
   },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Generate blog post"
-  }
+    "default_title": "Generate clinical note"
+  },
+  "background": {
+    "service_worker": "scripts/contextMenuServiceWorker.js"
+  },
+  "permissions": ["contextMenus", "tabs", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["scripts/content.js"]
+    }
+  ]
 }
