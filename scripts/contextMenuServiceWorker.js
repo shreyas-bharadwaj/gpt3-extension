@@ -22,10 +22,10 @@ const generate = async (prompt) => {
       Authorization: `Bearer ${key}`,
     },
     body: JSON.stringify({
-      model: "text-davinci-002",
+      model: "text-davinci-003",
       prompt: prompt,
       max_tokens: 800,
-      temperature: 0.5,
+      temperature: 0.55,
     }),
   });
 
@@ -40,7 +40,7 @@ const generateCompletionAction = async (info) => {
 
     const { selectionText } = info;
     const basePromptPrefix = `
-        Write me a detailed SOAP note with all four sections for a patient presenting with the following gender, condition, and age.
+        Write me a detailed SOAP note with all four sections for a patient given the following notes from the attending physician.
         `;
 
     const baseCompletion = await generate(
